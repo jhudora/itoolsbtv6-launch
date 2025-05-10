@@ -4,22 +4,44 @@
   <meta charset="UTF-8">
   <title>iToolsBT Location Launcher</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    button { margin: 5px; padding: 10px 20px; font-size: 16px; }
+    body { font-family: sans-serif; padding: 20px; background: #f8f8f8; }
+    button {
+      margin: 5px 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-  <h1>Test iToolsBT Location Launch</h1>
-  <p>Tap a button to test a URL format:</p>
-  <button onclick="launch('itoolsbt://open?lat=-36.8485&lon=174.7633')">Format 1</button>
-  <button onclick="launch('itoolsbt://location?latitude=-36.8485&longitude=174.7633')">Format 2</button>
-  <button onclick="launch('itoolsbt://?latlng=-36.8485,174.7633')">Format 3</button>
-  <button onclick="launch('itoolsbt://174.7633,-36.8485')">Format 4</button>
+  <h2>iToolsBT Location URL Tester</h2>
+  <p>Tap each button to test a different URL format:</p>
+  <div id="buttons"></div>
 
   <script>
-    function launch(url) {
-      window.location.href = url;
-    }
+    const urls = [
+      "itoolsbt://?lat=-36.8485&lon=174.7633",
+      "itoolsbt://open?lat=-36.8485&lon=174.7633",
+      "itoolsbt://location?latitude=-36.8485&longitude=174.7633",
+      "itoolsbt://coords?latlng=-36.8485,174.7633",
+      "itoolsbt://launch/174.7633,-36.8485",
+      "itoolsbt://loc/174.7633,-36.8485",
+      "itoolsbt://navigate?lat=-36.8485&lon=174.7633",
+      "itoolsbt://goto?latitude=-36.8485&longitude=174.7633",
+      "itoolsbt://geolocate/-36.8485/174.7633",
+      "itoolsbt://?location=-36.8485,174.7633",
+      "itoolsbt://setlocation/174.7633,-36.8485",
+      "itoolsbt://geo?lat=-36.8485&lon=174.7633"
+    ];
+
+    const container = document.getElementById("buttons");
+
+    urls.forEach((url, i) => {
+      const btn = document.createElement("button");
+      btn.innerText = `Test Format ${i + 1}`;
+      btn.onclick = () => window.location = url;
+      container.appendChild(btn);
+    });
   </script>
 </body>
 </html>
