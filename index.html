@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Launching iToolsBTv6...</title>
-    <script>
-      window.location.href = "itoolsbt://location/174.7633,-36.8485";
-    </script>
-  </head>
-  <body>
-    <p>If you're not redirected, <a href="itoolsbtv6://open">tap here</a>.</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>iToolsBT Location Launcher</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { margin: 5px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Test iToolsBT Location Launch</h1>
+  <p>Tap a button to test a URL format:</p>
+  <button onclick="launch('itoolsbt://open?lat=-36.8485&lon=174.7633')">Format 1</button>
+  <button onclick="launch('itoolsbt://location?latitude=-36.8485&longitude=174.7633')">Format 2</button>
+  <button onclick="launch('itoolsbt://?latlng=-36.8485,174.7633')">Format 3</button>
+  <button onclick="launch('itoolsbt://174.7633,-36.8485')">Format 4</button>
+
+  <script>
+    function launch(url) {
+      window.location.href = url;
+    }
+  </script>
+</body>
 </html>
